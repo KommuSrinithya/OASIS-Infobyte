@@ -1,0 +1,191 @@
+import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
+
+class Reservation {
+    private int id;
+    private String name;
+    private String date;
+    private int numberOfGuests;
+
+    public Reservation(int id, String name, String date, int numberOfGuests) {
+        this.id = id;
+        this.name = name;
+        this.date = date;
+        this.numberOfGuests = numberOfGuests;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public int getNumberOfGuests() {
+        return numberOfGuests;
+    }
+}
+
+class ReservationSystem {
+    private List<Reservation> reservations = new ArrayList<>();
+    private int nextId = 1;
+
+    public Reservation makeReservation(String name, String date, int numberOfGuests) {
+        Reservation reservation = new Reservation(nextId++, name, date, numberOfGuests);
+        reservations.add(reservation);
+        return reservation;
+    }
+
+    public List<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public Reservation getReservationById(int id) {
+        for (Reservation reservation : reservations) {
+            if (reservation.getId() == id) {
+                return reservation;
+            }
+        }
+        return null;
+    }
+
+    public boolean cancelReservation(int id) {
+        Reservation reservation = getReservationById(id);
+        if (reservation != null) {
+            reservations.remove(reservation);
+            return true;
+        }
+        return false;
+    }
+}
+
+class ReservationSystemUI {
+    private ReservationSystem reservationSystem = new ReservationSystem();
+    private int nextUserId = 1;
+    private List<User> users = new ArrayList<>();
+    private User currentUser = null;
+
+    public ReservationSystemUI() {
+        // Initialize some users (replace with your own user data)
+        users.add(new User(nextUserId++, "user1", "password1"));
+        users.add(new User(nextUserId++, "user2", "password2"));
+    }
+
+    public void start() {
+        Scanner scanner = new Scanner(System.in);
+
+        while (true) {
+            if (currentUser == null) {
+                System.out.println("Please log in:");
+                currentUser = login(scanner);
+                if (currentUser == null) {
+                    continue; // If login fails, retry
+                }
+            }
+
+            System.out.println("1. Make a reservation");
+            System.out.println("2. View all reservations");
+            System.out.println("3. Cancel a reservation");
+            System.out.println("4. Logout");
+            System.out.println("5. Exit");
+
+            int choice = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (choice) {
+                case 1:
+                    System.out.print("Name: ");
+                    String name = scanner.nextLine();
+                    System.out.print("Date: ");
+                    String date = scanner.nextLine();
+                    System.out.print("Number of guests: ");
+                    int numberOfGuests = scanner.nextInt();
+                    scanner.nextLine();
+
+                    Reservation reservation = reservationSystem.makeReservation(name, date, numberOfGuests);
+                    System.out.println("Reservation made with ID " + reservation.getId());
+                    break;
+                case 2:
+                    System.out.println("Reservations:");
+                    for (Reservation r : reservationSystem.getReservations()) {
+                        System.out.println(r.getId() + " - " + r.getName() + " - " + r.getDate() + " - " + r.getNumberOfGuests());
+                    }
+                    break;
+                case 3:
+                    System.out.print("Reservation ID to cancel: ");
+                    int id = scanner.nextInt();
+                    scanner.nextLine();
+
+                    if (reservationSystem.cancelReservation(id)) {
+                        System.out.println("Reservation canceled");
+                    } else {
+                        System.out.println("Reservation not found");
+                    }
+                    break;
+                case 4:
+                    currentUser = null;
+                    System.out.println("Logged out.");
+                    break;
+                case 5:
+                    System.out.println("Exiting the program.");
+                    return;
+                default:
+                    System.out.println("Invalid choice");
+            }
+
+            System.out.println();
+        }
+    }
+
+    private User login(Scanner scanner) {
+        System.out.print("Enter username: ");
+        String username = scanner.nextLine();
+        System.out.print("Enter password: ");
+        String password = scanner.nextLine();
+
+        for (User user : users) {
+            if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
+                return user;
+            }
+        }
+        System.out.println("Invalid username or password. Please try again.");
+        return null;
+    }
+}
+
+class User {
+    private int id;
+    private String username;
+    private String password;
+
+    public User(int id, String username, String password) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        ReservationSystemUI reservationSystemUI = new ReservationSystemUI();
+        reservationSystemUI.start();
+    }
+}
