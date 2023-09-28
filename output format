@@ -1,0 +1,122 @@
+Welcome to ATM...
+
+Select 1 for Withdraw 
+
+Select 2 for Deposit
+
+Select 3 for Check Balance
+
+Select 4 for Transaction History
+
+Select 5 for Transfer
+
+Select 6 for EXIT
+
+Select the appropriate option you want to perform: 1
+
+Enter the amount to be withdrawn: 2000
+
+Please collect your money and remove the card. The Current Balance: 48000
+
+Welcome to ATM...
+
+Select 1 for Withdraw
+
+select 2 for Deposit
+
+Select 3 for Check Balance
+
+Select 4 for Transaction History
+
+Select 5 for Transfer
+
+< select 6 for EXIT
+
+Select the appropriate option you want to perform: 2 
+
+Enter the amount to be deposited: 300
+
+Your money has been successfully deposited.
+
+The Current Balance: 4830
+
+Welcome to ATM...
+
+Select 1 for Withdraw
+
+select 2 for Deposit
+
+Select 3 for Check Balance
+
+Select 4 for Transaction History
+
+Select 5 for Transfer
+
+Select 6 for EXIT
+
+Select the appropriate option you want to perform: 3 The Current Balance: 48300
+
+Welcome to ATM Select 1 for Withdraw
+
+select 2 for Deposit
+
+Select 3 for Check Balance
+
+Select 4 for Transaction History
+
+Select 5 for Transfer Select 6 for EXIT
+
+Select the appropriate option you want to perform: 200 Invalid choice. Please select a valid option.
+
+Welcome to ATM ... Select 1 for Withdraw
+
+Select 2 for Deposit
+
+Select 3 for Check Balance Select 4 for Transaction History
+
+Select 5 for Transfer
+
+Select 6 for EXIT
+
+Select the appropriate option you want to perform: 4 Transaction History:
+
+Withdrawal: 2000
+
+Deposit: 300
+
+Select 1 for Withdraw Select 2 for Deposit
+
+Select 3 for Check Balance
+
+Select 4 for Transaction History Select 5 for Transfer
+
+Select 6 for EXIT
+
+Select the appropriate option you want to perform: 5
+
+Enter the amount to be transferred: 4000 
+
+Enter the recipient's account number: John Doe 
+
+Transfer to John Doe successful.
+
+The Current Balance: 44300
+
+Welcome to ATM
+
+Select 1 for withdraw
+
+Select 2 for Deposit
+
+Select 3 for Check Balance
+
+Select 4 for Transaction History
+
+Select 5 for Transfer
+
+Select 6 for EXIT
+
+Select the appropriate option you want to perform: 6
+
+
+
