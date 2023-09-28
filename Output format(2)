@@ -1,0 +1,77 @@
+Please log in:
+Enter username: user1
+Enter password: password1
+Logged in as user1
+
+1. Make a reservation
+2. View all reservations
+3. Cancel a reservation
+4. Logout
+5. Exit
+
+Enter your choice: 1
+Name: John Doe
+Date: 2023-10-15
+Number of guests: 4
+Reservation made with ID 1
+
+1. Make a reservation
+2. View all reservations
+3. Cancel a reservation
+4. Logout
+5. Exit
+
+Enter your choice: 2
+Reservations:
+1 - John Doe - 2023-10-15 - 4
+
+1. Make a reservation
+2. View all reservations
+3. Cancel a reservation
+4. Logout
+5. Exit
+
+Enter your choice: 3
+Reservation ID to cancel: 1
+Reservation canceled
+
+1. Make a reservation
+2. View all reservations
+3. Cancel a reservation
+4. Logout
+5. Exit
+
+Enter your choice: 2
+Reservations:
+
+1. Make a reservation
+2. View all reservations
+3. Cancel a reservation
+4. Logout
+5. Exit
+
+Enter your choice: 4
+Logged out.
+
+Please log in:
+Enter username: user2
+Enter password: password2
+Logged in as user2
+
+1. Make a reservation
+2. View all reservations
+3. Cancel a reservation
+4. Logout
+5. Exit
+
+Enter your choice: 2
+Reservations:
+
+1. Make a reservation
+2. View all reservations
+3. Cancel a reservation
+4. Logout
+5. Exit
+
+Enter your choice: 5
+Exiting the program.
