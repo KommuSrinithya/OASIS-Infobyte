@@ -1,0 +1,98 @@
+import java.util.*;
+import java.util.ArrayList;
+
+public class Main {
+    private static int balance = 50000;
+    private static ArrayList<String> transactionHistory = new ArrayList<>();
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        while (true) {
+            System.out.println("Welcome to ATM ... ");
+            System.out.println("Select 1 for Withdraw");
+            System.out.println("Select 2 for Deposit");
+            System.out.println("Select 3 for Check Balance");
+            System.out.println("Select 4 for Transaction History");
+            System.out.println("Select 5 for Transfer");
+            System.out.println("Select 6 for EXIT");
+            System.out.print("Select the appropriate option you want to perform: ");
+
+            int choice = sc.nextInt();
+
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter the amount to be withdrawn: ");
+                    int withdrawAmount = sc.nextInt();
+                    withdraw(withdrawAmount);
+                    break;
+                case 2:
+                    System.out.print("Enter the amount to be deposited: ");
+                    int depositAmount = sc.nextInt();
+                    deposit(depositAmount);
+                    break;
+                case 3:
+                    printBalance();
+                    break;
+                case 4:
+                    printTransactionHistory();
+                    break;
+                case 5:
+                    System.out.print("Enter the amount to be transferred: ");
+                    int transferAmount = sc.nextInt();
+                    transfer(transferAmount);
+                    break;
+                case 6:
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please select a valid option.");
+            }
+        }
+    }
+
+    public static void printBalance() {
+        System.out.println("The Current Balance: " + balance);
+        System.out.println();
+    }
+
+    public static void withdraw(int amount) {
+        if (amount > balance) {
+            System.out.println("Sorry! Insufficient balance.");
+        } else {
+            balance -= amount;
+            transactionHistory.add("Withdrawal: " + amount);
+            System.out.println("Please collect your money and remove the card.");
+        }
+        printBalance();
+    }
+
+    public static void deposit(int amount) {
+        balance += amount;
+        transactionHistory.add("Deposit: " + amount);
+        System.out.println("Your money has been successfully deposited.");
+        printBalance();
+    }
+
+    public static void transfer(int amount) {
+        if (amount > balance) {
+            System.out.println("Sorry! Insufficient balance for the transfer.");
+        } else {
+            System.out.print("Enter the recipient's account number: ");
+            Scanner sc = new Scanner(System.in);
+            String recipientAccount = sc.nextLine();
+            transactionHistory.add("Transfer to " + recipientAccount + ": " + amount);
+            balance -= amount;
+            System.out.println("Transfer to " + recipientAccount + " successful.");
+        }
+        printBalance();
+    }
+
+    public static void printTransactionHistory() {
+        System.out.println("Transaction History:");
+        for (String transaction : transactionHistory) {
+            System.out.println(transaction);
+        }
+        System.out.println();
+    }
+}
